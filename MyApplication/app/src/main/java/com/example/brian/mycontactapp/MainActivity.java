@@ -1,6 +1,7 @@
 package com.example.brian.mycontactapp;
 
 import android.database.Cursor;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static android.R.id.message;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     EditText editName;
     EditText editEmail;
+    EditText editPhone;
     Button btnAddData;
 
     @Override
@@ -29,12 +32,13 @@ public class MainActivity extends AppCompatActivity {
         //Add layout variables
         editName = (EditText) findViewById(R.id.editText_name);
         editEmail = (EditText) findViewById(R.id.editText_email);
+        editPhone = (EditText) findViewById(R.id.editText_phone);
 
     }
 
     public void addData(View v)
     {
-        boolean isInserted = myDb.insertData(editName.getText().toString(), editEmail.getText().toString());
+        boolean isInserted = myDb.insertData(editName.getText().toString(), editEmail.getText().toString(), editPhone.getText().toString());
 
         if(isInserted == true){
             Log.d("MyContact", "Success inserting data");
@@ -46,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void viewData(View d) {
+    public void viewData(View v) {
         Cursor res = myDb.getAllData();
         if (res.getCount() == 0) {
             showMessage("Error", "No data is found in the database");
@@ -62,7 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showMessage(String error, String s){
+    private void showMessage(String title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true); //cancel using back button
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
 
     }
 }
