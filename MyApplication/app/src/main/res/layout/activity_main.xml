@@ -118,6 +118,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/button_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                tools:layout_editor_absoluteX="130dp"
+                tools:layout_editor_absoluteY="325dp" />
+
+            <EditText
+                android:id="@+id/editText_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="85dp"
+                tools:layout_editor_absoluteY="115dp" />
+
         </TableRow>
     </TableLayout>
 

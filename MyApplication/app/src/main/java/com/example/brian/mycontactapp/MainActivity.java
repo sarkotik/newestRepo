@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         editName = (EditText) findViewById(R.id.editText_name);
         editEmail = (EditText) findViewById(R.id.editText_email);
         editPhone = (EditText) findViewById(R.id.editText_phone);
+        btnAddData = (Button) findViewById(R.id.button_add);
 
     }
 
@@ -62,6 +63,15 @@ public class MainActivity extends AppCompatActivity {
         //set up a loop with the cursor (res), using method moveToNext
         //   append each clmn to the buffer
         // display message using showMessage
+        if (res != null) {
+            res.moveToFirst();
+            for(int i = 0; i<res.getColumnNames().length; i++)
+            {
+                buffer.append(res.getString(i) + "\n");
+            }
+            buffer.append("\n");
+            res.moveToNext();
+        }
         showMessage("Data", buffer.toString());
 
     }
