@@ -122,6 +122,7 @@
                 android:id="@+id/button_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="search"
                 android:text="Search"
                 tools:layout_editor_absoluteX="130dp"
                 tools:layout_editor_absoluteY="325dp" />
